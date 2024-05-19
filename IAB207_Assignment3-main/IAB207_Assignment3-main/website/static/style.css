@@ -1,0 +1,94 @@
+#hero {
+    background-image: url('https://images.pexels.com/photos/6646949/pexels-photo-6646949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity:0.8;
+    filter: brightness(100%);
+    font-family: "Darumadrop One";
+  
+}
+.text{
+    color:white;
+    
+}
+
+
+.card img{
+  height: 200px;
+  object-fit: cover;
+}
+
+.navbar-nav .nav-link {
+    color: #141414;
+    font-size:18px;
+  }
+  
+.navbar-nav .nav-link:hover {
+    color: #fff;
+    background-color:#3d550cad ;
+    border-radius: 20px;
+  }
+
+  .list-group {
+	position: sticky;
+	top: 0;
+  }
+
+.btn:hover{
+  background-color:#3d550cad ;
+}
+
+#list-group>a:hover{
+  background-color: #ecf87f86;
+}
+#list-group>a{
+  font-family:"Darumadrop One"
+}
+
+#navbarbrand {
+  font-family:"Darumadrop One";
+  font-size:30px
+}
+
+#navbar-nav {
+  font-family:"Darumadrop One";
+  
+}
+h1 {
+  font-family:"Darumadrop One"
+}
+
+#userheading{
+  font-family: "Darumadrop One";
+  text-align: left;
+  padding: 10px;
+}
+
+.event-image {
+  width: 600px;
+  height: 500px; 
+  object-fit: cover; /* Maintain aspect ratio and crop if needed */
+}
+
+.btn-update {
+  width: 100%;
+}
+
+.btn-cancel {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.event-owner {
+  font-size: 24px;
+  color: green;
+  margin-top: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid green;
+  padding: 10px;
+  border-radius: 10px;
+}

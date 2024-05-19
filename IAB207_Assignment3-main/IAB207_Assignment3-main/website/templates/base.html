@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment3</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darumadrop One">
+  </head>
+
+<body>
+    <!-- Header -->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}" id="navbarbrand">Give Back Nation</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto" id="navbar-nav">
+                    {% if current_user.is_authenticated %}
+                     <a class="nav-item nav-link disabled text-muted" href="#">Welcome! {{current_user.name}}</a>
+                     <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+                    {% else %}
+                     <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                     <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+                    {% endif %}
+                  <a class="nav-item nav-link" href="{{ url_for('event.create_event') }}">Create An Event</a>  
+                  <a class="nav-item nav-link" href="{{ url_for('main.history') }}">History</a>                                   
+                </div>  
+            </div>
+        </nav>
+
+
+
+        {% block header %}
+        {% endblock %}
+
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+
+</html>

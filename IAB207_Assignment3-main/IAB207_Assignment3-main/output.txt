@@ -1,0 +1,74 @@
+Albert Mathew (7):
+      Create database
+      Delete database
+      Add files via upload
+      Add files via upload
+      Delete IAB207_database.db.sql
+      Delete IAB207_database.sqbpro
+      database
+
+HAN XUEN (10):
+      Login, Register, Comment
+      Update login,register
+      Event
+      Update create event and event form
+      home page change to dynamic, event show correctly
+      #
+      Merge branch 'main' of https://github.com/ian1030/IAB207_Assignment3
+      add event status into show.html
+      done comment
+      add ticket available
+
+Han (3):
+      Add files via upload
+      Merge pull request #2 from ian1030/Testing
+      Merge pull request #3 from ian1030/Testing
+
+ian1030 (22):
+      Initial commit
+      Update README.md
+      Update README.md
+      Merge pull request #1 from ian1030/testing
+      Update README.md
+      Add files via upload
+      Booking form and templates
+      Working database and improvement on booking form
+      Latest version
+      Login, register and responsive navbar done
+      Booking, navigating, search bar, filtering done
+      Latest version
+      history done and functional searching
+      Latest
+      latest
+      latest
+      Merge branch 'main' into test
+      Merge pull request #6 from ian1030/test
+      Latest version
+      small modification
+      latest
+      Latest
+
+sd (1):
+      error handling
+
+soozkai (19):
+      Create no.6(temp)
+      Update no.6(temp)
+      Update no.6(temp)
+      Update show.html
+      Update event.py
+      Create Update.html
+      Update show.html
+      Update event.py
+      Update forms.py
+      Update views.py
+      Update index.html
+      Update event.py
+      Update and rename Update.html to Update.html for retrieving previous image
+      added option to choose category when creating an event
+      Update forms.py for the option to choose a category
+      Rename Update.html for retrieving previous image to Update.html
+      Update style.css for show.html
+      Update show.html
+      minor design updates
+
