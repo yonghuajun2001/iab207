@@ -1,75 +1,75 @@
+body {
+  font-family: "Poppins", sans-serif;
+  ;
+}
+
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
 #hero {
-    background-image: url('https://images.pexels.com/photos/6646949/pexels-photo-6646949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity:0.8;
-    filter: brightness(100%);
-    font-family: "Darumadrop One";
-  
+  background-image: url('./image/test1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(100%);
+  font-family: inherit;
+  background-color: #565656;
+  background-blend-mode: overlay;
 }
-.text{
-    color:white;
-    
+
+.text {
+  color: white;
+
 }
 
 
-.card img{
+.card img {
   height: 200px;
   object-fit: cover;
 }
 
 .navbar-nav .nav-link {
-    color: #141414;
-    font-size:18px;
-  }
-  
-.navbar-nav .nav-link:hover {
-    color: #fff;
-    background-color:#3d550cad ;
-    border-radius: 20px;
-  }
-
-  .list-group {
-	position: sticky;
-	top: 0;
-  }
-
-.btn:hover{
-  background-color:#3d550cad ;
+  color: #141414;
+  font-size: 18px;
 }
 
-#list-group>a:hover{
-  background-color: #ecf87f86;
-}
-#list-group>a{
-  font-family:"Darumadrop One"
+.list-group {
+  position: sticky;
+  top: 0;
 }
 
 #navbarbrand {
-  font-family:"Darumadrop One";
-  font-size:30px
+  font-family: inherit;
+  font-size: 30px;
+  color: #000 !important;
 }
 
 #navbar-nav {
-  font-family:"Darumadrop One";
-  
-}
-h1 {
-  font-family:"Darumadrop One"
+  font-family: inherit;
+
 }
 
-#userheading{
-  font-family: "Darumadrop One";
+h1 {
+  font-family: inherit;
+}
+
+#userheading {
+  font-family: inherit;
   text-align: left;
   padding: 10px;
 }
 
 .event-image {
   width: 600px;
-  height: 500px; 
-  object-fit: cover; /* Maintain aspect ratio and crop if needed */
+  height: 500px;
+  object-fit: cover;
+  /* Maintain aspect ratio and crop if needed */
 }
 
 .btn-update {
@@ -91,4 +91,71 @@ h1 {
   border: 2px solid green;
   padding: 10px;
   border-radius: 10px;
+}
+
+.bg-body-tertiary {
+  background-color: #f8f9fa;
+}
+
+.custom-footer .text-center {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.nav-item,
+.nav-link {
+  background: none;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover,
+.nav-link:hover {
+  background: none !important;
+  border: none !important;
+  text-decoration: underline;
+  color: #4396ff !important;
+}
+
+.nav-img {
+  max-height: 75px;
+}
+
+.section-large {
+  height: 75vh;
+}
+
+.section-small {
+  min-height: 50vh;
+}
+
+.home-search {
+  border: none !important;
+  caret-color: #4396ff;
+}
+
+.home-search:focus,
+.home-search:active {
+  box-shadow: none;
+  outline: none;
+}
+
+.home-search-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.home-search-btn:hover {
+  background-color: #0069d9;
+}
+
+.home-about-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+form {
+  margin: 0;
 }

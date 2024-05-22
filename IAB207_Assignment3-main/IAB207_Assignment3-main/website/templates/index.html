@@ -3,11 +3,11 @@
 {% block header %}
 {% with messages = get_flashed_messages() %}
 {% if messages %} <!-- check if there are any messages -->
-  <div class="container-fluid">
-    <div class="row mt-3 mb-3">
-      <div class="col-md-12">
+<div class="container-fluid">
+  <div class="row mt-3 mb-3">
+    <div class="col-md-12">
       {% for message in messages %} <!--loop through the messages-->
-        <div class="alert alert-info">{{ message }}</div> <!--display as alert-->
+      <div class="alert alert-info">{{ message }}</div> <!--display as alert-->
       {% endfor %}
     </div>
   </div>
@@ -15,25 +15,43 @@
 {% endif %}
 {% endwith %}
 
-<!--Jumbotron-->
-<div class="p-5 text-center bg-image rounded-3" id=hero>
-  <div class="mask">
+<!-- Jumbotron -->
+<section class="section-large bg-image text-center" id="hero">
+  <div class="container">
     <div class="d-flex justify-content-center align-items-center h-100">
       <div class="text">
-        <h1 class="mb-3" style="font-size:64px"> Looking For A </h1>
-        <h4 class="mb-3" style="font-size:52px"> Specific Events ? </h4>
-        <form class="form-inline d-flex flex-nowrap" action="{{ url_for('main.search') }}" >
-          <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="SearchForm">
-          <button type="submit" class="flex-shrink-1 btn btn-primary my-1">Submit</button>
+        <h1 class="mb-3" style="font-size:52px">Find the music event for you</h1>
+        <form class="form-inline d-flex flex-nowrap rounded-pill bg-white" action="{{ url_for('main.search') }}">
+          <div class="ml-4 mr-2 d-flex w-100 py-2">
+            <input type="text" name="search" placeholder="Search upcoming events"
+              class="flex-grow-1 my-1 mr-sm-2 rounded-pill-left home-search" id="SearchForm">
+            <button type="submit" class="home-search-btn rounded-pill text-center p-2"><i
+                class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
         </form>
       </div>
     </div>
   </div>
-</div>
-<div class="container my-5">
-{% endblock %}
+</section>
 
-{% block content %}
+<!-- About -->
+<section class="section-small py-5">
+  <div class="container">
+    <div class="row flex-row gx-5 d-flex align-items-center">
+      <div class="col-md-4">
+        <img class="img img-fluid text-center mx-auto" src="../static/image/guitar.png" alt="Guitar" />
+      </div>
+      <div class="col-md-8">
+        <h1 class="home-about-title">MelodyMeet provides a trusted platform for 700,00+ fans fostering a vibrant and safe music community</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container my-5">
+  {% endblock %}
+
+  {% block content %}
   <div class="container my-5">
     <h1>Welcome to GiveBack Nation</h1>
     <p class="lead">What's on GiveBack Nation</p>
@@ -45,7 +63,8 @@
           <a href="{{ url_for('main.all') }}" class="list-group-item list-group-item-action">All</a>
           <a href="{{ url_for('main.run') }}" class="list-group-item list-group-item-action">Charity Run</a>
           <a href="{{ url_for('main.auction') }}" class="list-group-item list-group-item-action">Charity Auction</a>
-          <a href="{{ url_for('main.donation') }}" class="list-group-item list-group-item-action">Charity Food Donation</a>
+          <a href="{{ url_for('main.donation') }}" class="list-group-item list-group-item-action">Charity Food
+            Donation</a>
           <a href="{{ url_for('main.other') }}" class="list-group-item list-group-item-action">Others</a>
         </div>
       </div>
@@ -59,16 +78,18 @@
               <div class="card-body">
                 <h5 class="card-title">{{ event.event_name }}</h5>
                 {% if event.event_status == 'Cancelled' %}
-                  <span class="badge badge-danger">{{ event.event_status }}</span>
+                <span class="badge badge-danger">{{ event.event_status }}</span>
                 {% elif event.event_ticket_quantity == 0 %}
-                  <span class="badge badge-secondary">{{ event.event_status }}</span>
+                <span class="badge badge-secondary">{{ event.event_status }}</span>
                 {% elif event.event_status == 'Inactive' %}
-                  <span class="badge badge-dark">{{ event.event_status }}</span>
+                <span class="badge badge-dark">{{ event.event_status }}</span>
                 {% else %}
-                  <span class="badge badge-success">{{ event.event_status }}</span>
+                <span class="badge badge-success">{{ event.event_status }}</span>
                 {% endif %}
                 <p class="card-text">{{ event.event_description }}</p>
-                <a href="{{ url_for('event.show', event_id=event.id, event_status=event_status) }}" class="btn btn-outline-dark btn btn-light" role="button" style="border-radius: 10px;border-width:3px">View Details</a>
+                <a href="{{ url_for('event.show', event_id=event.id, event_status=event_status) }}"
+                  class="btn btn-outline-dark btn btn-light" role="button"
+                  style="border-radius: 10px;border-width:3px">View Details</a>
               </div>
             </div>
           </div>
@@ -77,4 +98,4 @@
       </div>
     </div>
   </div>
-{% endblock %}
+  {% endblock %}

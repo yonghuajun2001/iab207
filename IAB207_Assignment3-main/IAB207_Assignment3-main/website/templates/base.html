@@ -9,35 +9,84 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darumadrop One">
-  </head>
+    <script src="https://kit.fontawesome.com/f6f0831a2e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
 
 <body>
     <!-- Header -->
     <header>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.index') }}" id="navbarbrand">Give Back Nation</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto" id="navbar-nav">
-                    {% if current_user.is_authenticated %}
-                     <a class="nav-item nav-link disabled text-muted" href="#">Welcome! {{current_user.name}}</a>
-                     <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
-                    {% else %}
-                     <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a>
-                     <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
-                    {% endif %}
-                  <a class="nav-item nav-link" href="{{ url_for('event.create_event') }}">Create An Event</a>  
-                  <a class="nav-item nav-link" href="{{ url_for('main.history') }}">History</a>                                   
-                </div>  
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid d-flex align-items-center">
+                <a class="navbar-brand" href="{{ url_for('main.index') }}" id="navbarbrand">
+                    <img class="nav-img" src="../static/image/logo-removebg.png" alt="Melody Meet" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between"
+                    id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="event.html">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('event.create_event') }}">Create Your Event</a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.history') }}">Booking History</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <div class="d-flex">
+                        <form class="nav-search d-flex rounded-pill bg-white mr-3">
+                            <div class="ml-4 mr-2 py-2 d-flex align-items-center">
+                                <input type="text" name="search" placeholder="Search events"
+                                    class="flex-grow-1 my-1 mr-sm-2 rounded-pill-left home-search" id="SearchForm"
+                                    style="width: 250px;">
+                                <button type="submit" class="home-search-btn rounded-pill text-center p-2"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                        {% if current_user.is_authenticated %}
+                        <a class="btn btn-primary btn-lg" href="{{ url_for('auth.logout') }}">Log Out</a>
+                        {% else %}
+                        <a class="btn btn-primary btn-lg" href="{{ url_for('auth.login') }}">Login/SignUp</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </nav>
 
-
+        <!-- <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto" id="navbar-nav">
+                        <a class="nav-item nav-link" href="{{ url_for('event.create_event') }}">Create An Event</a>
+                        <a class="nav-item nav-link" href="{{ url_for('main.history') }}">History</a>
+                        {% if current_user.is_authenticated %}
+                        <a class="nav-item nav-link disabled text-muted" href="#">Welcome! {{current_user.name}}</a>
+                        <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                        <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+                        {% endif %}
+                </div> -->
 
         {% block header %}
         {% endblock %}
@@ -47,10 +96,15 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="footer">
+    <footer class="footer custom-footer">
+        <div class="text-center p-4">
+            © 2024 MelodyMeet. All rights reserved.
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
