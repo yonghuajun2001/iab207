@@ -42,7 +42,8 @@
         <img class="img img-fluid text-center mx-auto" src="../static/image/guitar.png" alt="Guitar" />
       </div>
       <div class="col-md-8">
-        <h1 class="home-about-title">MelodyMeet provides a trusted platform for 700,00+ fans fostering a vibrant and safe music community</h1>
+        <h1 class="home-about-title">MelodyMeet provides a trusted platform for 700,000+ fans fostering a vibrant and
+          safe music community</h1>
       </div>
     </div>
   </div>
@@ -77,19 +78,27 @@
               <img src="{{ event.event_image }}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">{{ event.event_name }}</h5>
-                {% if event.event_status == 'Cancelled' %}
-                <span class="badge badge-danger">{{ event.event_status }}</span>
-                {% elif event.event_ticket_quantity == 0 %}
-                <span class="badge badge-secondary">{{ event.event_status }}</span>
-                {% elif event.event_status == 'Inactive' %}
-                <span class="badge badge-dark">{{ event.event_status }}</span>
-                {% else %}
-                <span class="badge badge-success">{{ event.event_status }}</span>
-                {% endif %}
-                <p class="card-text">{{ event.event_description }}</p>
+                <p class="card-text date">
+                  <strong>Date:</strong> {{ event.event_date.strftime('%d %B, %Y') }}<br>
+                  <strong>Time:</strong> {{ event.event_time.strftime('%I:%M %p') }}
+                </p>
+                <p class="card-text date">
+                  <strong>Venue:</strong> {{ event.event_venue }}
+                </p>
+                <div class="mb-2">
+                  {% if event.event_status == 'Cancelled' %}
+                  <span class="badge badge-danger">{{ event.event_status }}</span>
+                  {% elif event.event_ticket_quantity == 0 %}
+                  <span class="badge badge-secondary">{{ event.event_status }}</span>
+                  {% elif event.event_status == 'Inactive' %}
+                  <span class="badge badge-dark">{{ event.event_status }}</span>
+                  {% else %}
+                  <span class="badge badge-success">{{ event.event_status }}</span>
+                  {% endif %}
+                </div>
+                <!-- <p class="card-text">{{ event.event_description }}</p> -->
                 <a href="{{ url_for('event.show', event_id=event.id, event_status=event_status) }}"
-                  class="btn btn-outline-dark btn btn-light" role="button"
-                  style="border-radius: 10px;border-width:3px">View Details</a>
+                  class="btn btn-primary w-30 mx-auto" role="button">View Event</a>
               </div>
             </div>
           </div>

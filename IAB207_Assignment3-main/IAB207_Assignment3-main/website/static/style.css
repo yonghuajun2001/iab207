@@ -159,3 +159,33 @@ h1 {
 form {
   margin: 0;
 }
+
+.vh-80 {
+  height: 80vh;
+}
+
+.min-vh-80 {
+  height: 80vh;
+}
+
+#userform {
+  max-width: 400px;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.form-img {
+  width: 70%;
+}
+
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 48px;
+}
