@@ -38,17 +38,17 @@
                             <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="event.html">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('event.create_event') }}">Create Your Event</a>
+                            <a class="nav-link" href="{{ url_for('event.create_event') }}">Create Event</a>
                         </li>
                         {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Profile</a>
+                            <a class="nav-link" href="#">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('main.history') }}">Booking History</a>

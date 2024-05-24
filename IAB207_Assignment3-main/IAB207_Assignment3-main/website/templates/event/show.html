@@ -6,81 +6,146 @@
 {% if messages %} <!-- check if there are any messages -->
 <div class="container-fluid">
     <div class="row mt-3 mb-3">
-    <div class="col-md-12">
-    {% for message in messages %} <!--loop through the messages-->
-        <div class="alert alert-info">{{ message }}</div> <!--display as alert-->
-    {% endfor %}
+        <div class="col-md-12">
+            {% for message in messages %} <!--loop through the messages-->
+            <div class="alert alert-info">{{ message }}</div> <!--display as alert-->
+            {% endfor %}
+        </div>
     </div>
-</div>
 </div>
 {% endif %}
 {% endwith %}
 
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-6">
-        <img src="{{ event.event_image }}" class="img-fluid event-image" alt="Event Image" />
-      </div>
-      <div class="col-md-6">
-        <h1 class="mb-3">{{ event.event_name }}</h1>
-        <p>{{ event.event_description }}</p>
-        <p>Date: {{ event.event_date.strftime('%d %B, %Y') }}</p>
-        <p>Time: {{ event.event_time.strftime('%I:%M %p') }}</p>
-        <p>Venue: {{ event.event_location }}</p>
-        {% if event.event_ticket_quantity == 0.0 %}
-        <p> Ticket Quantity: SOLD OUT</p>
-        {% else %}
-        <p> Ticket Quantity: {{event.event_ticket_quantity}}</p>
-        {% endif %}
-        {% if event.event_ticket_price == 0.0 %}
-        <p> Ticket Price: Free</p>
-        {% else %}
-        <p> Ticket Price: {{event.event_ticket_price}}</p>
-        {% endif %}
-        <p> Status: {{ event.event_status }}</p>
-        <div class="d-flex flex-column">
-            {% if event.user == current_user %}
-            <a href="{{ url_for('event.update', event_id=event.id) }}" class="btn btn-outline-dark btn-light btn-update">Update Event</a>
-                {% if event.event_status == 'Open' %}
-                <form action="{{ url_for('event.cancel', event_id=event.id) }}" method="post" style="display: inline;">
-                    <button type="submit" class="btn btn-outline-dark btn-danger btn-cancel">Cancel Event</button>
-                </form>
-                {% endif %}
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <img src="{{ event.event_image }}" class="img-fluid rounded mb-4" alt="Event banner">
+            <h1 class="mb-3">{{ event.event_name }}</h1>
+            <p class="mb-2">{{ event.event_description }}</p>
+            <div class="mb-4">
                 {% if event.event_status == 'Cancelled' %}
-                <form action="{{ url_for('event.open', event_id=event.id) }}" method="post" style="display: inline;">
-                    <button type="submit" class="btn btn-outline-dark btn-cancel">Open Event</button>
-                </form>
-                {% endif %}
-            {% else %}
-                {% if event.event_status in ['Inactive', 'Sold Out', 'Cancelled'] %}
-                <a href="{{ url_for('event.disablebooking', event_id=event.id) }}" class="btn btn-outline-dark btn-light mr-2" disabled>Book Event</a>
+                <span class="badge badge-danger">{{ event.event_status }}</span>
+                {% elif event.event_ticket_quantity == 0 %}
+                <span class="badge badge-secondary">{{ event.event_status }}</span>
+                {% elif event.event_status == 'Inactive' %}
+                <span class="badge badge-dark">{{ event.event_status }}</span>
                 {% else %}
-                <a href="{{ url_for('event.booking', event_id=event.id) }}" class="btn btn-outline-dark btn-light">Book Event</a>
+                <span class="badge badge-success">{{ event.event_status }}</span>
                 {% endif %}
-            {% endif %}
-        </div>
-      </div>
-    </div>
+            </div>
+            <p class="mb-0"><strong>Artist:</strong> The Bearded Lady and Tiny Minds Agency</p>
+            <p class="mb-0"><strong>Date:</strong> {{ event.event_date.strftime('%d %B, %Y') }}</p>
+            <p class="mb-0"><strong>Start Time:</strong> {{ event.event_time.strftime('%I:%M %p') }} - <strong>End
+                    Time:</strong> {{ event.event_time.strftime('%I:%M %p') }}</p> <!-- Need to fix end time -->
+            <p class="mb-0"><strong>Venue:</strong> {{ event.event_location }}</p>
 
-    <hr>
-    <!-- Comments -->
-    <div class="row mt-5">
-        <div class="col-md-12">
-            <section class="content-item" id="comments">
-              <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            {{wtf.render_form(commentform,"/events/{0}/comment".format(event.id))}}
-                            {% for comment in event.comments %}
-                            <div class="col-md-12">
-                                <b>{{comment.user.name}} <span class="ml-2 text-muted">{{ comment.comment_date.strftime('%d/%m/%Y') }}</span></b>
-                                <p>{{comment.comment}}</p>
-                            </div>
-                            {% endfor %}
-                        </div>
+            <!-- Ticket Section -->
+            <h5 class="card-title-2 mt-3">Ticket</h5>
+            <div class="card card-body mb-4">
+                <div class="mb-3">
+                    <div>
+                        <label for="ticketQuantity" class="form-label">Total Tickets</label>
                     </div>
+                    <select class="form-select w-100 border rounded p-2" id="ticketQuantity">
+                        <option selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="1">5</option>
+                        <option value="2">6</option>
+                        <option value="3">7</option>
+                        <option value="4">8</option>
+                        <option value="1">9</option>
+                        <option value="2">10</option>
+                        <option value="3">11</option>
+                        <option value="4">12</option>
+                        <option value="1">13</option>
+                        <option value="2">14</option>
+                        <option value="3">15</option>
+                        <option value="4">16</option>
+                        <option value="1">17</option>
+                        <option value="2">18</option>
+                        <option value="3">19</option>
+                        <option value="4">20</option>
+                        <!-- Add more options as needed -->
+                    </select>
                 </div>
-            </section>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <!-- Flex row for bottom items -->
+                    {% if event.event_ticket_quantity == 0.0 %}
+                    <p class="mb-0"> Ticket Quantity: SOLD OUT</p>
+                    {% else %}
+                    <p class="mb-0"> Ticket Quantity: {{event.event_ticket_quantity}}</p>
+                    {% endif %}
+                    {% if event.event_ticket_price == 0.0 %}
+                    <p class="mb-0"> Ticket Price: Free</p>
+                    {% else %}
+                    <p class="mb-0"> Ticket Price: {{event.event_ticket_price}}</p>
+                    {% endif %}
+
+                    {% if event.user == current_user %}
+                    <a href="{{ url_for('event.update', event_id=event.id) }}" class="btn btn-secondary mb-0">Update
+                        Event</a>
+                    {% if event.event_status == 'Open' %}
+                    <form action="{{ url_for('event.cancel', event_id=event.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger mb-0">Cancel Event</button>
+                    </form>
+                    {% endif %}
+                    {% if event.event_status == 'Cancelled' %}
+                    <form action="{{ url_for('event.open', event_id=event.id) }}" method="post">
+                        <button type="submit" class="btn btn-warning mb-0">Open Event</button>
+                    </form>
+                    {% endif %}
+                    {% else %}
+                    {% if event.event_status in ['Inactive', 'Sold Out', 'Cancelled'] %}
+                    <a href="{{ url_for('event.disablebooking', event_id=event.id) }}" class="btn btn-primary mb-0"
+                        disabled>Buy Now</a>
+                    {% else %}
+                    <a href="{{ url_for('event.booking', event_id=event.id) }}" class="btn btn-primary mb-0">Buy
+                        Now</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Organised By Section --> <!-- Requires a Python variable update -->
+            <h5 class="card-title-2">Organised by</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-muted">1.9k following this creator</small><br>
+                        <small class="text-muted">20% of attendees are repeat customers</small>
+                    </p>
+                    <p>An independent bar and live music venue located in the heart of West End.</p>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <h5 class="card-title-2">Comments</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+                    {% for comment in event.comments %}
+                    <div class="comment mb-3">
+                        <strong>{{comment.user.name}}</strong> - Posted on {{
+                        comment.comment_date.strftime('%d/%m/%Y') }}
+                        <p>Great event, looking forward to it!</p>
+                    </div>
+                    <div class="comment mb-3">
+                        <strong>User2</strong> - Posted on 19/04/2024
+                        <p>{{comment.comment}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Post Comment Form -->
+            <h5 class="card-title-2">Leave a Comment</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+                    {{wtf.render_form(commentform,"/events/{0}/comment".format(event.id))}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
