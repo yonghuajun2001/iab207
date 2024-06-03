@@ -38,18 +38,9 @@
                             <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="event.html">Events</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('event.create_event') }}">Create Event</a>
                         </li>
                         {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('main.history') }}">Booking History</a>
                         </li>
@@ -57,13 +48,6 @@
                     </ul>
                     <div class="d-flex">
                         <form class="nav-search d-flex rounded-pill bg-white mr-3">
-                            <div class="ml-4 mr-2 py-2 d-flex align-items-center">
-                                <input type="text" name="search" placeholder="Search events"
-                                    class="flex-grow-1 my-1 mr-sm-2 rounded-pill-left home-search" id="SearchForm"
-                                    style="width: 250px;">
-                                <button type="submit" class="home-search-btn rounded-pill text-center p-2"><i
-                                        class="fa-solid fa-magnifying-glass"></i></button>
-                            </div>
                         </form>
                         {% if current_user.is_authenticated %}
                         <a class="btn btn-primary btn-lg" href="{{ url_for('auth.logout') }}">Log Out</a>

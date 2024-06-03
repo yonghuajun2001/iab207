@@ -30,7 +30,8 @@ def create_event():
         ('Charity Run', 'Charity Run'),
         ('Charity Auction', 'Charity Auction'),
         ('Charity Food Donation', 'Charity Food Donation'),
-        ('Others', 'Others')
+        ('Others', 'Others'),
+        ('Music Dance', 'Music Dance')
     ]
 
     if create.validate_on_submit():

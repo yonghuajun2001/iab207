@@ -44,7 +44,8 @@ class EventForm(FlaskForm):
         ('Charity Run', 'Charity Run'),
         ('Charity Auction', 'Charity Auction'),
         ('Charity Food Donation', 'Charity Food Donation'),
-        ('Others', 'Others')
+        ('Others', 'Others'),
+        ('Music Dance', 'Music Dance')
     ], validators=[InputRequired()])
     image = FileField('Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
@@ -64,7 +65,8 @@ class UpdateEventForm(FlaskForm):
         ('Charity Run', 'Charity Run'),
         ('Charity Auction', 'Charity Auction'),
         ('Charity Food Donation', 'Charity Food Donation'),
-        ('Others', 'Others')
+        ('Others', 'Others'),
+        ('Music Dance', 'Music Dance')
     ], validators=[InputRequired()])
     image = FileField('New Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
